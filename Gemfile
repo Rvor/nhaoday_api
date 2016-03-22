@@ -31,6 +31,7 @@ gem 'devise'
 
 group :test do
   gem 'rspec-rails'
+  gem 'email_spec'
 end
 
 group :test, :development do

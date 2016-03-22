@@ -2,6 +2,8 @@
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
+require 'email_spec'
+
 
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 RSpec.configure do |config|
@@ -82,6 +84,8 @@ RSpec.configure do |config|
   config.include Request::HeadersHelpers, :type => :controller
   config.include Devise::TestHelpers, :type => :controller
 
+  config.include EmailSpec::Helpers
+  config.include EmailSpec::Matchers
 
   config.before(:each, type: :controller) do
     include_default_accept_headers
